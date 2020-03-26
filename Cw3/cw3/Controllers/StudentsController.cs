@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Wyklad3.Models;
@@ -19,15 +21,49 @@ namespace Wyklad3.Controllers
         [HttpGet]
         public IActionResult GetStudents([FromQuery]string orderBy)
         {
-            return Ok(_dbService.GetStudents());
+            using (var con = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19171;Integrated Security=True"))
+            using (var com = new SqlCommand())
+            {
+                com.Connection = con;
+                com.CommandText = "select * from student";
+                con.Open();
+                var dr = com.ExecuteReader();
+                var list = new List<Student>();
+                while (dr.Read())
+                {
+                    var st = new Student();
+//                    st.IdStudent = Int32.Parse(dr["IdStudent"].ToString());
+                    st.FirstName = dr["FirstName"].ToString();
+                    st.LastName = dr["LastName"].ToString();
+                    st.IndexNumber = dr["IndexNumber"].ToString();
+                    st.BirthDate = DateTime.Parse(dr["BirthDate"].ToString());
+                    list.Add(st);
+                }
+                return Ok(list);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetStudent([FromRoute]int id)
         {
-            Student s = _dbService.GetStudent(id);
-            if(!(s==null))return Ok(s);
-            else return NotFound("Student was not found");
+            using (var con = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19171;Integrated Security=True"))
+            using (var com = new SqlCommand())
+            {
+                com.Connection = con;
+                com.CommandText = "select E.semester, A.name, E.startdate from student S join enrollment E on S.idenrollment = E.idenrollment join Studies A on E.IdStudy=A.IdStudy where S.indexNumber=@id";
+                com.Parameters.AddWithValue("id", "s"+id.ToString());
+                con.Open();
+                var dr = com.ExecuteReader();
+                if(dr.Read())
+                {
+                    var st = new Enrollment();
+                    st.Semester = Int32.Parse(dr["Semester"].ToString());
+                    st.Study = dr["Name"].ToString();
+                    st.StartDate = DateTime.Parse(dr["StartDate"].ToString());
+                    return Ok(st);
+                }
+                else return NotFound("Student not found");
+            }
         }
 
         [HttpPost]
