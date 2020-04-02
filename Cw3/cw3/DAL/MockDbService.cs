@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Wyklad3.Models;
+using cw3.Models;
 
 namespace Wyklad3.Services
 {

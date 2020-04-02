@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Wyklad3.Services;
+using cw3.Services;
 
 namespace Wyklad3
 {
@@ -24,7 +24,7 @@ namespace Wyklad3
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IDbService, MockDbService>();
+            services.AddScoped<IStudentsDbService, SqlServerDbService>();
             services.AddControllers();
         }
 

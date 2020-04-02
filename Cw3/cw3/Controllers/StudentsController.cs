@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Wyklad3.Models;
+using cw3.Models;
 using Wyklad3.Services;
 
 namespace Wyklad3.Controllers
