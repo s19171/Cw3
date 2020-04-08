@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using cw3.Services;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Text;
+using cw3.Middlewares;
 
 namespace Wyklad3
 {
@@ -25,18 +29,43 @@ namespace Wyklad3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStudentsDbService, SqlServerDbService>();
+            services.AddTransient<IDbService, SqlServerDbService>();
             services.AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbService dbService)
         {
             app.UseDeveloperExceptionPage();
 
             app.UseRouting();
 
+            app.UseMiddleware<LoggingMiddleware>();
+
             app.Use(async (context, c) =>
             {
-                context.Response.Headers.Add("Secret", "1234");
+                if (!context.Request.Headers.ContainsKey("Index"))
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsync("Nie podano indeksu naglowku");
+                    return;
+                }
+
+                var index = context.Request.Headers["Index"].ToString();
+                var bodyStream = string.Empty;
+
+                using (var reader = new StreamReader(context.Request.Body, Encoding.UTF8, true, 1024, true))
+                {
+                    bodyStream = await reader.ReadToEndAsync();
+                }
+
+                if (!dbService.CheckIndexNumber(index))
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsync("Podany student nie istnieje");
+                    return;
+                    //poinformować o nieistejacym studencie
+                }
+                //context.Response.Headers.Add("Secret", "1234");
                 await c.Invoke();
             });
             app.UseMiddleware<CustomMiddleware>();

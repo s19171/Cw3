@@ -8,12 +8,31 @@ using System.Threading.Tasks;
 
 namespace cw3.Services
 {
-    public class SqlServerDbService : IStudentsDbService
+    public class SqlServerDbService : IStudentsDbService, IDbService
     {
         public SqlServerDbService()
         {
 
         }
+
+        public bool CheckIndexNumber(string index)
+        {
+        using (var con = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19171;Integrated Security=True"))
+        using (var com = new SqlCommand())
+            {
+                com.Connection = con;
+                con.Open();
+                com.CommandText = "select * from Student where IndexNumber=@index";
+                com.Parameters.AddWithValue("index", index);
+                var dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+
         public Enrollment EnrollStudent(EnrollStudentRequest request)
         {
             using (var con = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19171;Integrated Security=True"))
