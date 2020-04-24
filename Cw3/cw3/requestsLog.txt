@@ -157,3 +157,512 @@ POST
 "Studies": "studia2", "Semester": 1 }
 Query jest puste
 
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+GET
+/api/students/111
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+POST
+/api/enrollments/promotions
+{
+"Studies": "studia2", "Semester": 1 }
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+POST
+/api/enrollments/promotions
+{
+"Studies": "studia2", "Semester": 1 }
+Query jest puste
+
+POST
+/api/enrollments/promotions
+{
+"Studies": "studia2", "Semester": 1 }
+Query jest puste
+
+POST
+/api/enrollments/promotions
+{
+"Studies": "studia2", "Semester": 1 }
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"Studies": "studia2", "Semester": 1 }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+Body jest puste
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/promotions
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", "password": "aa" }
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/enrollments/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/enrollments
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+	
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+}
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/login
+{
+"login": "studia2", 
+"password": "aa" 
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "s111", 
+"password": "pass" 
+}
+Query jest puste
+
+GET
+/api/students
+Body jest puste
+Query jest puste
+
+GET
+/favicon.ico
+Body jest puste
+Query jest puste
+
+POST
+/api/login
+{
+"login": "s111", 
+"password": "pass" 
+}
+Query jest puste
+
+POST
+/api/login
+{
+"login": "s111", 
+"password": "pass" 
+}
+Query jest puste
+
+POST
+/api/login
+{
+	"login": "s111", 
+	"password": "pass" 
+}
+Query jest puste
+

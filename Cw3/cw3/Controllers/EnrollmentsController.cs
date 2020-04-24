@@ -6,6 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using cw3.Models;
 using cw3.Services;
+using Microsoft.AspNetCore.Authorization;
+using cw3.DTOs;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace cw3.Controllers
 {
@@ -13,6 +20,7 @@ namespace cw3.Controllers
     [ApiController]
     public class EnrollmentsController : ControllerBase
     {
+
         private readonly IStudentsDbService _dbService;
         public EnrollmentsController(IStudentsDbService dbService)
         {
@@ -20,6 +28,7 @@ namespace cw3.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "employee")]
         public IActionResult Enroll([FromBody] EnrollStudentRequest request)
         {
             if(request.FirstName==null||request.LastName==null||request.Studies==null||request.Birthdate==null||request.IndexNumber==null)return BadRequest();
@@ -29,12 +38,14 @@ namespace cw3.Controllers
         }
 
         [HttpPost("promotions")]
+        [Authorize(Roles = "employee")]
         public IActionResult PromoteStudents([FromBody]PromotionRequest request)
         {
             Enrollment result = _dbService.PromoteStudents(request.semester, request.studies);
             if (result == null) return NotFound();
             return Created("",result);
         }
+
     }
 }
 
