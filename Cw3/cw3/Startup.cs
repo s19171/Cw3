@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Authentication;
 using cw3.Handlers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using cw3.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wyklad3
 {
@@ -32,22 +34,29 @@ namespace Wyklad3
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IStudentsDbService, SqlServerDbService>();
-            services.AddTransient<IDbService, SqlServerDbService>();
-            services.AddAuthentication("AuthenticationBasic").AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("AuthenticationBasic",null);
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            services.AddScoped<IStudentsDbService, EfStudentsDbService>();
+            services.AddDbContext<StudentDbContext>(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidIssuer = "Gakko",
-                    ValidAudience = "Students",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecretKey"]))
-                };
-            }); ;
-            services.AddControllers().AddXmlSerializerFormatters();
+                options.UseSqlServer("Data Source=db-mssql;Initial Catalog=s19171;Integrated Security=True");
+            });
+
+            //services.AddScoped<IStudentsDbService, SqlServerDbService>();
+            services.AddTransient<IDbService, SqlServerDbService>();
+            //services.AddAuthentication("AuthenticationBasic").AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("AuthenticationBasic",null);
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            //{
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidateLifetime = true,
+            //        ValidIssuer = "Gakko",
+            //        ValidAudience = "Students",
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecretKey"]))
+            //    };
+            //}); ;
+            services.AddControllers();
+                //.AddXmlSerializerFormatters();
            
         }
 
@@ -89,7 +98,7 @@ namespace Wyklad3
             //app.UseMiddleware<CustomMiddleware>();
 
             app.UseAuthorization();
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

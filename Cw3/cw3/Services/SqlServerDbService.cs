@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace cw3.Services
 {
-    public class SqlServerDbService : IStudentsDbService, IDbService
+    public class SqlServerDbService : IDbService
     {
         public SqlServerDbService()
         {
